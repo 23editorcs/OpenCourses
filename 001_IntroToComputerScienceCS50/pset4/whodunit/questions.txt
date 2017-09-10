@@ -1,0 +1,27 @@
+
+
+1.  stdin.h is a header file in C99 standard, allows to use more exact-width integer types.
+
+2.  To have more exact-width interger types and control all variables in program, know exactly what they work.
+
+3.  1, 4, 4, 2
+
+4.  BM - 66 77 - 42 4D 
+
+5. bfSize is the size of the whole bmp file. biSize is the size of bi structure which is 40 bytes.
+
+ biHeight is negative that means the bmp is Top-down DIB and can't compressbiHeight is negative that means the bmp is Top-down DIB and can't compress.
+
+6. biBitCount
+
+7. fopen might return NULL when it can't open the file for any reasons. 
+
+8. fread's third argument is the repeat time for reading. Therefore 1 means just read once then stop.
+
+9. It changes the first "4" to "3".
+
+10. 3
+
+11. fseek set the position of cursor in a file, it moves the cursor for an offset value (in bytes).
+
+12. SEEK_CUR is set the position of indicator to start, which in this case is from the current position. 
