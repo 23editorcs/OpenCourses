@@ -38,7 +38,7 @@ def quicksort(array):
 
         la, lc = quicksort(array[:j-1])
         ra, rc = quicksort(array[j:])
-        print(ra)
+        
         counts += lc + rc
 
     return array, counts
