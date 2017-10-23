@@ -7,10 +7,12 @@ public class TxHandler {
      */
     public TxHandler(UTXOPool utxoPool) {
         // IMPLEMENT THIS
+        public_UTXOPool = UTXOPool(UTXOPool utxoPool);
+                  
     }
 
     /**
-     * @return true if:
+     * return true if:
      * (1) all outputs claimed by {@code tx} are in the current UTXO pool, 
      * (2) the signatures on each input of {@code tx} are valid, 
      * (3) no UTXO is claimed multiple times by {@code tx},
@@ -20,6 +22,12 @@ public class TxHandler {
      */
     public boolean isValidTx(Transaction tx) {
         // IMPLEMENT THIS
+        // Check the outputs are in the current UTXO poll
+        for {Input in : inputs}:
+            System.out.print(in.prexTxhash);
+                
+
+
     }
 
     /**
