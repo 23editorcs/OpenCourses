@@ -21,7 +21,7 @@ public class TxHandler {
      *     values; and false otherwise.
      */
     public boolean isValidTx(Transaction tx) {
-        // IMPLEMENT THIS
+        // IMPLEMENT THISf
         // Check the outputs are in the current UTXO poll
         for {Input in : inputs}:
             System.out.print(in.prexTxhash);
