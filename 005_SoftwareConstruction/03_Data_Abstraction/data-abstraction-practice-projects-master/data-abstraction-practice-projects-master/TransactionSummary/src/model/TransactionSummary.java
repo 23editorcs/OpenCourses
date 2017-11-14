@@ -59,13 +59,14 @@ public class TransactionSummary {
                 counts += 1;
             }
         }
+        if (counts == 0) {return 0;}
+
         return totalCost/counts;
     }
 
     // REQUIRES: transactions is non-empty
     // EFFECTS: returns the largest transaction (in terms of cost) in this TransactionSummary
     public Transaction largestTransaction() {
-        // TODO: complete the implementation of this method
         //transactions.sort(Comparator.comparing(Transaction::getAmount).reversed());
         //transactions.sort(((o1, o2) -> o1.getAmount().compareTo(o2.getAmount())));
         Transaction largest = transactions.get(0);
@@ -81,7 +82,6 @@ public class TransactionSummary {
 
     // EFFECTS: returns true if the given transaction is contained within the list of transactions
     public boolean contains(Transaction t) {
-        // TODO: complete the implementation of this method
         return transactions.contains(t);
     }
 

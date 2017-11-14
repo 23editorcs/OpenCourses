@@ -68,6 +68,9 @@ public class TransactionSummaryTest {
 
     @Test
     public void testspecificTypeAverage() {
+        TransactionSummary noTypeSummary = new TransactionSummary("Quy Nguyen");
+        noTypeSummary.addTransaction(t1);
+        assertEquals(noTypeSummary.specificTypeAverage(EDUCATION), 0, 0.05);
         assertEquals(testSummary.specificTypeAverage(FOOD), (11+5+20)/3, 0.05);
         assertEquals( testSummary.specificTypeAverage(EDUCATION), 150, 0.05);
     }
