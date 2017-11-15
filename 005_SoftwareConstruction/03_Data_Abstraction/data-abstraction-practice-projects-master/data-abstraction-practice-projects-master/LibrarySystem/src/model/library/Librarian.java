@@ -10,25 +10,24 @@ public class Librarian {
     private Book favBook;
 
     public Librarian(String name, int age, Library lib, Book bk) {
-        //TODO: complete the specifications and implementation of this method
+        this.name = name;
+        this.age = age;
+        managingLibrary = lib;
+        favBook = bk;
     }
 
     // getters
     public String getName() {
-        //TODO: complete the specifications and implementation of this method
-        return null;
+        return name;
     }
     public int getAge() {
-        //TODO: complete the specifications and implementation of this method
-        return 0;
+        return age;
     }
     public Library getManagingLibrary() {
-        //TODO: complete the specifications and implementation of this method
-        return null;
+        return managingLibrary;
     }
     public Book getFavBook() {
-        //TODO: complete the specifications and implementation of this method
-        return null;
+        return favBook;
     }
 
     // REQUIRES: lib != null
@@ -38,8 +37,10 @@ public class Librarian {
     //          also have an associated librarian field? Does it make a
     //          difference in the implementation of this method?
     public boolean changeLibrary(Library lib) {
-        //TODO: complete the specifications and implementation of this method
-        return false;
+        if (managingLibrary.equals(lib)) { return false; }
+        managingLibrary = lib;
+        lib.hireLibrarian(new Librarian(name, age, lib, favBook));
+        return true;
     }
 
 

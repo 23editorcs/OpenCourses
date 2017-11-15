@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Band {
@@ -11,35 +12,35 @@ public class Band {
     private int numShowsPlayed;
 
     public Band(String name) {
-        // TODO: complete the implementation of this method
+        this.name = name;
+        members = new ArrayList<>();
+        totalMoney = 0.0;
+        currentMoney = 0.0;
+        numShowsPlayed = 0;
     }
+
 
     // getters
     public String getName() {
-        // TODO: complete the implementation of this method
-        return null;
+        return name;
     }
     public double getTotalMoney() {
-        // TODO: complete the implementation of this method
-        return 0.0;
+        return totalMoney;
     }
     public double getCurrentMoney() {
-        // TODO: complete the implementation of this method
-        return 0.0;
+        return currentMoney;
     }
     public List<String> getMembers() {
-        // TODO: complete the implementation of this method
-        return null;
+        return members;
     }
     public int getNumShowsPlayed() {
-        // TODO: complete the implementation of this method
-        return 0;
+        return numShowsPlayed;
     }
 
     // MODIFIES: this
     // EFFECTS: adds a member with the given name to the band
     public void addMember(String name) {
-        // TODO: complete the implementation of this method
+        members.add(name);
     }
 
     // MODIFIES: this
@@ -47,8 +48,9 @@ public class Band {
     //          the current money and total money by the amount, and add one to
     //          the number of shows played.
     public void playGig(double amt) {
-        // TODO: complete the implementation of this method
-
+        currentMoney += amt;
+        totalMoney += amt;
+        numShowsPlayed += 1;
     }
 
     // MODIFIES: this
@@ -56,15 +58,17 @@ public class Band {
     //          is subtracted from the current money. If there is not enough
     //          money, nothing happens
     public void payMembers(double amt) {
-        // TODO: complete the implementation of this method
+        // check if there is enough money
+        if (currentMoney >= (amt * members.size())) {
+            currentMoney -= (amt * members.size());
+        }
     }
 
     // REQUIRES: numShowsPlayed > 0
     // MODIFIES: nothing
     // EFFECTS: computes the average amount the band is payed per show
     public double averagePerShow() {
-        // TODO: complete the implementation of this method
-        return 0.0;
+        return totalMoney / numShowsPlayed;
     }
 
 

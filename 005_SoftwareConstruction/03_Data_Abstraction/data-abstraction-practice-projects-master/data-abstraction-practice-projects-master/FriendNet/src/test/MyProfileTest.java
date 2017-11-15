@@ -96,5 +96,18 @@ public class MyProfileTest {
     }
 
     // TODO: write some more test to obtain 100% test coverage
+    @Test
+    public void testaddFriend(){
+        // Todo
+    }
 
+    @Test
+    public void testaddEvent(){
+        // Todo
+    }
+
+    @Test
+    public void testspecificEventType(){
+        // Todo
+    }
 }

@@ -86,7 +86,7 @@ public class Order {
     public String kitchenInstruction(){
         String comboList = new String();
         for (int comboid: getComboId()){
-            comboList.concat(" ").concat(foodType(comboid));
+            comboList = comboList.concat(" ").concat(foodType(comboid));
         }
         return getTicketNumber() + " Combo: " + comboList + " Instruction: "
                 + getInstruction();
@@ -96,7 +96,7 @@ public class Order {
     private String foodType(int comboid){
         switch(comboid){
             case 1: return "Salad";
-            case 2: return "Pasts";
+            case 2: return "Pasta";
             case 3: return "Pizza";
             case 4: return "Tacos";
             case 5: return "Sandwich";

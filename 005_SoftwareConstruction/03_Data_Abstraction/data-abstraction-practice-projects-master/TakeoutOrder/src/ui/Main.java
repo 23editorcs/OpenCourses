@@ -14,7 +14,7 @@ public class Main {
         List<Order> orders = new ArrayList<>();
         orders.add(o1);
 
-        o1.completed();
+//        o1.completed();
 
         for(Order o: orders){
             if(o.isCompleted()){
