@@ -1,4 +1,4 @@
-# OpenCourses
+# Open Source Society University
 
 The OSSU curriculum is a **complete education in computer science** using online materials.
 It's not merely for career training or professional development.
