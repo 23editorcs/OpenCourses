@@ -16,8 +16,8 @@ public class Calendar {
 
     // getters
 
-    public Date getToday() {
-        return today;
+    public String getToday() {
+        return today.getShortDate();
     }
 
     public String getAccount() {
