@@ -13,6 +13,7 @@ public class Animal {
         careTaker = zk;
         weight = wgt;
         country = ct;
+        zk.addToList(this);
     }
 
     // getters
