@@ -23,6 +23,18 @@ public class BurgerByteTest {
     }
 
     @Test
+    public void testaddStaff() {
+        restaurant.removeStaff(frycook);
+        restaurant.removeStaff(cashier);
+        assertEquals(restaurant.getStaff().size(), 0);
+        assertFalse(restaurant.getStaff().contains(frycook));
+        assertFalse(restaurant.getStaff().contains(cashier));
+        restaurant.addStaff(frycook);
+        assertEquals(restaurant.getStaff().size(), 1);
+        assertTrue(restaurant.getStaff().contains(frycook));
+    }
+
+    @Test
     public void testGetters() {
         assertEquals(restaurant.getLocation(), "Bikini Bottom");
         assertEquals(restaurant.getManager(), manager);
@@ -61,17 +73,7 @@ public class BurgerByteTest {
         assertFalse(restaurant.getStaff().contains(frycook));
     }
 
-    @Test
-    public void testaddStaff() {
-        restaurant.removeStaff(frycook);
-        restaurant.removeStaff(cashier);
-        assertEquals(restaurant.getStaff().size(), 0);
-        assertFalse(restaurant.getStaff().contains(frycook));
-        assertFalse(restaurant.getStaff().contains(cashier));
-        restaurant.addStaff(frycook);
-        assertEquals(restaurant.getStaff().size(), 1);
-        assertTrue(restaurant.getStaff().contains(frycook));
-    }
+
 
     @Test
     public void testcomputeStaffWages() {

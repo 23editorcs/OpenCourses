@@ -38,7 +38,5 @@ public abstract class Employee {
     public abstract void leaveWork();
 
     // EFFECTS: computes wages for the day
-    public double computeWage() {
-        return (hoursWorked * (Cashier.CASHIER_WAGE + BASE_WAGE));
-    }
+    public abstract double computeWage();
 }

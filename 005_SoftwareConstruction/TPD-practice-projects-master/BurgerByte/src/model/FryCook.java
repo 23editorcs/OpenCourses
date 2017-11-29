@@ -11,7 +11,7 @@ public class FryCook extends Employee {
         super(age, name);
         this.workBranch = workBranch;
         isGrillReady = false;
-        workBranch.addFryCook(this);
+        workBranch.addStaff(this);
     }
 
     // getters
@@ -33,6 +33,11 @@ public class FryCook extends Employee {
         isGrillReady = false;
         atWork = false;
         System.out.println("Grill is closed for the day.");
+    }
+
+    @Override
+    public double computeWage() {
+        return (hoursWorked * (BASE_WAGE + FRYCOOK_WAGE));
     }
 
 }

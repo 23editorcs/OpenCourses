@@ -48,7 +48,7 @@ public class ManagerTest {
     @Test
     public void testhire() {
         assertEquals(manager.getTeam().size(), 2);
-        Employee newHire = new FryCook("Patrick Star", 19, restaurant);
+        FryCook newHire = new FryCook("Patrick Star", 19, restaurant);
         manager.fire(newHire);
         assertEquals(manager.getTeam().size(), 2);
         assertEquals(manager.getManagingBranch().getStaff().size(), 2);

@@ -11,7 +11,7 @@ public class Cashier extends Employee {
         super(age, name);
         this.workBranch = workBranch;
         isRegisterOpen = false;
-        workBranch.addCashier(this);
+        workBranch.addStaff(this);
     }
 
     public BurgerByte getWorkPlace() { return workBranch; }
