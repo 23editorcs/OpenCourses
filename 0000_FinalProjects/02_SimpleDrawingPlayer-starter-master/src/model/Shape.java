@@ -7,16 +7,16 @@ import java.awt.*;
 
 
 public abstract class Shape {
-    protected static Color PLAYING_COLOR;
+    private static Color PLAYING_COLOR;
 
     protected int x;
     protected int y;
     protected int width;
     protected int height;
 
-    protected boolean selected;
+    private boolean selected;
 
-    protected MidiSynth midiSynth;
+    private MidiSynth midiSynth;
     protected int instrument;
     protected int playLineCoord;
 

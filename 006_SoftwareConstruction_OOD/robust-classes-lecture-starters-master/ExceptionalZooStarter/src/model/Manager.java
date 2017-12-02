@@ -1,5 +1,8 @@
 package model;
 
+import exception.AllergicException;
+import exception.Broke;
+import exception.DidntEat;
 import exception.NotHungry;
 
 import java.util.List;
@@ -14,12 +17,14 @@ public class Manager {
         this.keeper = keeper;
     }
 
-    public void manage() {
+    public void manage() throws Broke {
         try {
             keeper.feed();
-        } catch (NotHungry notHungry) {
-            notHungry.printStackTrace();
-            System.out.println("Feed less...");
+        } catch (DidntEat e) {
+            System.out.println("Get the doctor!");
+            throw new Broke();
+        } finally {
+            System.out.println("Managing zoo...");
         }
     }
 
