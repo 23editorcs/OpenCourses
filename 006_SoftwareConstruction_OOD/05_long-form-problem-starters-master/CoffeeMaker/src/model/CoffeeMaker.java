@@ -50,6 +50,7 @@ public class CoffeeMaker {
             this.cups = 15;
             this.time = 0;
         }
+        assert(cups == 15 && time == 0);
     }
 
     //MODIFIES: this
