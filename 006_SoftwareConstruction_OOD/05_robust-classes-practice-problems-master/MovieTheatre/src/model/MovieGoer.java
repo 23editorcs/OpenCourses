@@ -1,5 +1,8 @@
 package model;
 
+import exceptions.AgeRestrictionException;
+import exceptions.ShowingFullException;
+
 public class MovieGoer {
 
     private String name;
@@ -16,20 +19,16 @@ public class MovieGoer {
 
     // getters
     public String getName() {
-        // TODO: complete the implementation of this method
-        return null;
+        return name;
     }
     public int getAge() {
-        // TODO: complete the implementation of this method
-        return 0;
+        return age;
     }
     public TicketKiosk getTicketKiosk() {
-        // TODO: complete the implementation of this method
-        return null;
+        return tk;
     }
     public Ticket getTicket() {
-        // TODO: complete the implementation of this method
-        return null;
+        return ticket;
     }
 
     // REQUIRES: the movie (m) must not be at full capacity, i.e. more people can watch the movie
@@ -37,8 +36,13 @@ public class MovieGoer {
     // MODIFIES: this
     // EFFECTS: a new ticket associated with the given movie is created, and
     //           becomes this MovieGoer's ticket
-    public void buyTicket(Movie m) {
-        // TODO: complete the implementation of this method
+    public void buyTicket(Movie m) throws AgeRestrictionException, ShowingFullException {
+        if (!m.isFull()) {
+            if (age > m.getAgeRestriction()) {
+                m.addViewer();
+                this.ticket = new Ticket(m);
+            } else { throw new AgeRestrictionException("Your age is not over " + m.getAgeRestriction() + " to watch this movie."); }
+        } else { throw new ShowingFullException("The movies is full. Sorry!"); }
     }
 
 

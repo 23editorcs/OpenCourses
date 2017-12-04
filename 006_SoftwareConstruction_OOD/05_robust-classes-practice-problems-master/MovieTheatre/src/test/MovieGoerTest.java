@@ -1,5 +1,7 @@
 package test;
 
+import exceptions.AgeRestrictionException;
+import exceptions.ShowingFullException;
 import model.Movie;
 import model.MovieGoer;
 import model.Ticket;
@@ -40,25 +42,48 @@ public class MovieGoerTest {
 
     @Test
     public void testBuyTicketNoUnderAgeException() {
-       // TODO: implement this test method where you do NOT expect the buyTicket() method to throw UnderAgeException
+        try {
+            mg1.buyTicket(m1);
+            mg2.buyTicket(m2);
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+        assertEquals(mg1.getTicket(), t1);
+        assertEquals(mg2.getTicket(), t2);
     }
 
     @Test
     public void testBuyTicketUnderAgeException() {
-        // TODO: implement this test method where you DO expect the buyTicket() method to throw UnderAgeException
+        try {
+            mg2.buyTicket(m1);
+            fail("It shouldn't be here.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 
     @Test
     public void testBuyTicketNoShowingFullException() {
-        // TODO: implement this test method where you do NOT expect the buyTicket() method to throw ShowingFullException
+        try {
+            mg1.buyTicket(m1);
+        } catch (Exception e) {
+            fail("Got exception but shouldn't be here.");
+        }
     }
 
     @Test
     public void testBuyTicketShowingFullException() {
-        // TODO: implement this test method where you DO expect the buyTicket() method to throw ShowingFullException
-
+        for (int i = 0; i < 50; i++) {
+            m1.addViewer();
+        }
+        try {
+            mg2.buyTicket(m1);
+            fail("It shouldn't be here.");
+        } catch (AgeRestrictionException e) {
+            fail("This exception was incorrectly thrown.");
+        } catch (ShowingFullException e) {
+            System.out.println(e.getMessage());
+        }
     }
-
-
 }

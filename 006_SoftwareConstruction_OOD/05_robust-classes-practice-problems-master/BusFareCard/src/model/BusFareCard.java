@@ -38,8 +38,16 @@ public class BusFareCard {
     // EFFECTS: if the REQUIRES clause is fulfilled, subtract cost of the adult fare from the balance
     //          and set the fareLoaded field to true
     public void purchaseAdultFare() throws IllegalAgeException, NoBalanceException {
-        //TODO: complete the implementation of this method
+        if (ownerAge > AGE_CUTOFF) {
+            if (balance >= ADULT_FARE) {
+                balance -= ADULT_FARE;
+                fareLoaded = true;
+            } else { throw new NoBalanceException("$" + balance + " is not enough, you need $" + ADULT_FARE); }
+        } else {
+            throw new IllegalAgeException("Your age is under " + AGE_CUTOFF);
+        }
     }
+
 
     // REQUIRES: the age of this card must be <= AGE_CUTOFF
     //           the balance on this card must be >= 0 after purchasing the card
@@ -47,21 +55,29 @@ public class BusFareCard {
     // EFFECTS: if the REQUIRES clauses is fulfilled, subtract cost of a concession fare from the balance
     //          and set the fareLoaded field to true
     public void purchaseConcessionTicket() throws IllegalAgeException, NoBalanceException {
-        //TODO: complete the implementation of this method
+        if (ownerAge <= AGE_CUTOFF) {
+            if (balance >= CONCESSION_FARE) {
+                balance -= CONCESSION_FARE;
+                fareLoaded = true;
+            } else { throw new NoBalanceException("$" + balance +" is not enough, you need $" + CONCESSION_FARE); }
+        } else { throw new IllegalAgeException("Your age is over " + AGE_CUTOFF); }
     }
 
     // REQUIRES: amount you want to load onto the card must be > 0
     // MODIFIES: this
     // EFFECTS: loads the specified amount onto the card's balance field
     public void reloadBalance(double amount) throws IllegalAmountException {
-        //TODO: complete the implementation of this method
+        if (amount > 0) {
+            balance += amount;
+        } else { throw new IllegalAmountException("$" + amount + " is not legel amount to load."); }
     }
 
     // REQUIRES: the fareLoaded field must be true in order to "board" a bus
     // MODIFIES: this
     // EFFECTS: sets fareLoaded field to false, else throws exception
     public void boardBus() throws MissingFareException {
-        //TODO: complete the implementation of this method
+        if (fareLoaded) { fareLoaded = false; }
+        else { throw new MissingFareException("You don't pay for the ticket."); }
     }
 
 
