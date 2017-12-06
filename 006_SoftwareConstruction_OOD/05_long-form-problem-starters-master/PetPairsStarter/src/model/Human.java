@@ -2,10 +2,14 @@ package model;
 
 import model.pets.Pet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Human {
     private String name;
     private double spendibees;
+    private List<Pet> pets = new ArrayList<>();
 
     public Human(String name) {
         this.name = name;

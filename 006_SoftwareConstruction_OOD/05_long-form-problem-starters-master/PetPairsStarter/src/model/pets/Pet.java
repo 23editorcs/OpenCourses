@@ -2,7 +2,9 @@ package model.pets;
 
 import model.Human;
 
-public class Pet {
+import java.util.ArrayList;
+
+public class Pet extends ArrayList<Pet> {
     protected boolean friendly;
     protected boolean needsAttention;
     protected String species;
