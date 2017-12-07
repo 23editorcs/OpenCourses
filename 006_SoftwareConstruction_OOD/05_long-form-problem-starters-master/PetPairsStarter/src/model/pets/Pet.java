@@ -10,6 +10,7 @@ public class Pet extends ArrayList<Pet> {
     protected String species;
     protected String color;
     protected double price;
+    protected Human human;
 
     public Pet(String species, String color, boolean friendly, boolean needsAttention, double price){
         this.species = species;
@@ -17,6 +18,7 @@ public class Pet extends ArrayList<Pet> {
         this.friendly = friendly;
         this.needsAttention = needsAttention;
         this.price = price;
+        this.human = null;
     }
 
     public Pet(String species, String color, double price){
@@ -43,7 +45,7 @@ public class Pet extends ArrayList<Pet> {
     }
 
     public Human getHuman() {
-        return null;
+        return human;
     }
 
     //REQUIRES: human != null
@@ -52,10 +54,31 @@ public class Pet extends ArrayList<Pet> {
     public void adoptHuman(Human human) {
         System.out.println("Adopting a human!");
 
+        this.human = human;
         if (!human.hasPet(this)){
             human.adoptPet(this);
             System.out.println("Success! Adopted " + human);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pet)) return false;
+        if (!super.equals(o)) return false;
+
+        Pet pet = (Pet) o;
+
+        if (species != null ? !species.equals(pet.species) : pet.species != null) return false;
+        return color != null ? color.equals(pet.color) : pet.color == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (species != null ? species.hashCode() : 0);
+        result = 31 * result + (color != null ? color.hashCode() : 0);
+        return result;
     }
 
     @Override
@@ -65,7 +88,7 @@ public class Pet extends ArrayList<Pet> {
                 ", friendly=" + friendly +
                 ", color='" + color + '\'' +
                 ", price='" + price + '\'' +
-                ", human= " + //TODO 5
+                ", human= " + human + '\'' +
                 '}';
     }
 }

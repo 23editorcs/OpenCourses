@@ -19,7 +19,7 @@ public class PetPairs {
         Cat cat = new Cat("calico", false, true, 55.00);
         Dog dog = new Dog("black");
         Parrot parrot = new Parrot("green and red", true, false, 20.00);
-        Bunny bunny = new Bunny("white", false, false, 10.00);
+        Bunny bunny = new Bunny("white", true, false, 10.00);
         Human george = new Human("George");
         Human sally = new Human("Sally");
         Human jim = new Human("Jim");
@@ -40,6 +40,8 @@ public class PetPairs {
         store.addPet(dog);
         store.addPet(parrot);
         store.addPet(cat);
+        store.addPet(bunny);
+        store.displayAllPetsWithAttributes(true, false, 50.00);
 
         System.out.println();
 
