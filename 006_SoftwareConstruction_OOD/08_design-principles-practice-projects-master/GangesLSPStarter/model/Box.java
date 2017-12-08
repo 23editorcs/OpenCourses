@@ -11,6 +11,8 @@ public class Box {
     private static final String[] SIZES = {"none", "small", "medium", "large"};
     private static final double BASE_SHIPPING = 5.50;
 
+    private double MAX_EXPECTED_SHIPPING;
+
     // REQUIRES size must be one of "small", "medium", "large"
     public Box(String size) {
         // translate the size string into an int, for easier handling

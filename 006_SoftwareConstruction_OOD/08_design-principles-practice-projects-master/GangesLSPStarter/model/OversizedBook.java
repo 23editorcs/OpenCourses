@@ -21,21 +21,21 @@ public class OversizedBook extends Book {
         }
     }
 
-    // REQUIRES: model.Box must be large
-    // MODIFIES: this
-    // EFFECTS:  If the book fits in the given box, then the two are associated
-    //          (the book is packaged); otherwise return null.
-    @Override
-    public Box packageBook(Box b) {
-        if (b.getSize().equals("large")) {
-            System.out.println("The large box is big enough for this oversized book.");
-        } else {
-            System.out.println("WARNING: This box is way too small for an oversized book!");
-        }
-        this.setBox(b);
-        b.setContents(this);
-        return b;
-    }
+//    // REQUIRES: model.Box must be large
+//    // MODIFIES: this
+//    // EFFECTS:  If the book fits in the given box, then the two are associated
+//    //          (the book is packaged); otherwise return null.
+//    @Override
+//    public Box packageBook(Box b) {
+//        if (b.getSize().equals("large")) {
+//            System.out.println("The large box is big enough for this oversized book.");
+//        } else {
+//            System.out.println("WARNING: This box is way too small for an oversized book!");
+//        }
+//        this.setBox(b);
+//        b.setContents(this);
+//        return b;
+//    }
 
     // EFFECTS: Returns the shipping cost for this book, which is a base rate times a multiplier based on the book price.
     @Override
