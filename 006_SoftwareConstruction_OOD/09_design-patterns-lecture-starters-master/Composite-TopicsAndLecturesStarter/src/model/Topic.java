@@ -10,6 +10,7 @@ public class Topic {
 
     public void addTopic(Topic t) {
 
+
     }
 
     public void addLecture(Lecture lecture) {
