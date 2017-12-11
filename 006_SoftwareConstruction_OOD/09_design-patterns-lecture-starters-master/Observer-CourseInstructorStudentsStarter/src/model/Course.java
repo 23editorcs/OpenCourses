@@ -1,10 +1,12 @@
 package model;
 
 
+import observer.Subject;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Course {
+public class Course extends Subject {
     private String courseName;
     private Instructor instructor;
     private List<Student> students = new ArrayList<>();
@@ -23,6 +25,7 @@ public class Course {
         if(!students.contains(student)) {
             students.add(student);
             student.addCourse(this);
+            addObserver(student);
         }
     }
 
@@ -34,6 +37,7 @@ public class Course {
 
     public void addLectureModule(LectureModule lectureModule) {
         lectureModules.add(lectureModule);
+        notifyObservers(lectureModule);
     }
 
     @Override

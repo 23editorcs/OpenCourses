@@ -1,9 +1,11 @@
 package model;
 
+import observer.LectureObserver;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Student implements Teachable {
+public abstract class Student implements Teachable, LectureObserver {
 
     private String name;
     private int id;
@@ -20,6 +22,9 @@ public abstract class Student implements Teachable {
             c.addStudent(this);
         }
     }
+     public void update(LectureModule lectureModule) {
+         System.out.println("Prof has posted a " + lectureModule);
+     }
 
     public void printRecord(){
         System.out.println(id + ":" + name);
