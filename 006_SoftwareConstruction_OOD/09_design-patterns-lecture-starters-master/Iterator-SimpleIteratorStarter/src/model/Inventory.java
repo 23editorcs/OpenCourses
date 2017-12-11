@@ -1,10 +1,11 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
-public class Inventory {
+public class Inventory implements Iterable<Toy> {
 
     private List<Toy> toys = new ArrayList<>();
     private ArrayList<String> log = new ArrayList<>();
@@ -30,4 +31,8 @@ public class Inventory {
     }
 
 
+    @Override
+    public Iterator<Toy> iterator() {
+        return toys.iterator();
+    }
 }
