@@ -16,6 +16,9 @@ public class Main {
     public static void main(String[] args) {
 
        // TODO: add the static objects you've declared before this method to the iPod (nano)
+        nano.addMedia(m1);
+        nano.addMedia(s1);
+        nano.addMedia(p1);
 
         System.out.println(nano.getName() +"'s iPod contains: ");
         // TODO: Use the Iterator Design Pattern to make the following for-each loop run
