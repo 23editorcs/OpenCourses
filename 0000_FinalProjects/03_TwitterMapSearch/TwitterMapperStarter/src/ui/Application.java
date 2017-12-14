@@ -8,6 +8,7 @@ import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
 import org.openstreetmap.gui.jmapviewer.tilesources.BingAerialTileSource;
 
 import query.Query;
+import twitter.LiveTwitterSource;
 import twitter.PlaybackTwitterSource;
 import twitter.TwitterSource;
 import util.SphericalGeometry;
@@ -42,8 +43,8 @@ public class Application extends JFrame {
         // The number passed to the constructor is a speedup value:
         //  1.0 - play back at the recorded speed
         //  2.0 - play back twice as fast
-        twitterSource = new PlaybackTwitterSource(2.0);
-//        twitterSource = new LiveTwitterSource();
+//        twitterSource = new PlaybackTwitterSource(2.0);
+        twitterSource = new LiveTwitterSource();
         queries = new ArrayList<>();
     }
 
@@ -124,7 +125,11 @@ public class Application extends JFrame {
                 Point p = e.getPoint();
                 ICoordinate pos = map().getPosition(p);
                 // TODO: Use the following method to set the text that appears at the mouse cursor
-                map().setToolTipText();
+                for (MapMarker m : getMarkersCovering(pos, pixelWidth(p))) {
+                    map().setToolTipText( "<html><img src=\"" + ((MapMarkerImage) m).getUrl() + "\">" + "  "
+                            + "<html><center>" + ((MapMarkerImage) m).getText() + "</center>");
+                }
+
 
             }
         });

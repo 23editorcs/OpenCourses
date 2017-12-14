@@ -1,10 +1,13 @@
 package query;
 
 import filters.Filter;
+import org.openstreetmap.gui.jmapviewer.Coordinate;
 import org.openstreetmap.gui.jmapviewer.JMapViewer;
 import org.openstreetmap.gui.jmapviewer.Layer;
+import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
 import twitter4j.Status;
 import ui.MapMakerColor;
+import ui.MapMarkerImage;
 import ui.MapMarkerSimple;
 import util.*;
 
@@ -87,13 +90,14 @@ public class Query implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if (filter.matches((Status) arg)) {
-            MapMakerColor ans = new MapMakerColor(layer, Util.statusCoordinate((Status) arg), color);
-//            ans.setVisible(true);
-//            if (!layer.isVisible()) {
-//                layer.setVisible(true);
-//            }
+            Coordinate coor = Util.statusCoordinate((Status) arg);
+            BufferedImage img = Util.imageFromURL(((Status) arg).getUser().getProfileImageURL());
+            String imgURL = ((Status) arg).getUser().getBiggerProfileImageURL();
+            String text = ((Status) arg).getText();
+
+            MapMarker ans = new MapMarkerImage(layer, coor, img, text, imgURL);
+
             map.addMapMarker(ans);
-//            map.repaint();
         }
     }
 }
