@@ -29,7 +29,6 @@ public abstract class TwitterSource extends Observable {
         sync();
     }
 
-    public List<Observer> getObservers() { return observers; }
 
     public List<String> getFilterTerms() {
         return new ArrayList<>(terms);

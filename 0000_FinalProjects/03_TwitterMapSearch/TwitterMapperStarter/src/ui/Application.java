@@ -8,7 +8,6 @@ import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
 import org.openstreetmap.gui.jmapviewer.tilesources.BingAerialTileSource;
 
 import query.Query;
-import twitter.LiveTwitterSource;
 import twitter.PlaybackTwitterSource;
 import twitter.TwitterSource;
 import util.SphericalGeometry;
@@ -125,7 +124,8 @@ public class Application extends JFrame {
                 Point p = e.getPoint();
                 ICoordinate pos = map().getPosition(p);
                 // TODO: Use the following method to set the text that appears at the mouse cursor
-                map().setToolTipText("Waiting for Quy");
+                map().setToolTipText();
+
             }
         });
     }

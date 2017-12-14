@@ -11,4 +11,6 @@ public class TestImage {
     public void testImage() {
         BufferedImage norm = Util.imageFromURL("https://www.cs.ubc.ca/~norm");
     }
+
+
 }
