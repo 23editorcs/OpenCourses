@@ -1,0 +1,11 @@
+
+fun max1(xs : int list) =
+	if null xs
+	then NONE
+	else 
+		if null (tl xs)
+		then hd xs
+		else let val tl_max = max1(tl xs)
+			 in if t1_max > hd xs 
+				then tl_max
+				else SOME (hd xs)
