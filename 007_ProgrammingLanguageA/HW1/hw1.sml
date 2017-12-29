@@ -19,6 +19,27 @@ fun number_in_months (d : (int*int*int) list, m : int list) =
 	then 0
 	else number_in_month(d, hd m) + number_in_months(d, tl m)
 
+													
+fun isIncluded (n : int, xs : int list) =
+	if null xs
+	then false
+	else 
+		if n = (hd xs)
+		then true
+		else isIncluded(n, tl xs)
+
+fun remove_duplicate (xs : int list) =
+	if null xs
+	then []
+	else let val tl_list = remove_duplicate(tl xs)
+		 in if isIncluded(hd xs, tl_list)
+			then tl_list
+			else (hd xs) :: tl_list
+		 end
+
+fun number_in_months_challenge (d : (int*int*int) list, m : int list) =
+	number_in_months(d, remove_duplicate(m))
+
 fun dates_in_month (d : (int*int*int) list, m : int) =
 	if null d
 	then []
@@ -68,3 +89,19 @@ fun oldest (d : (int*int*int) list) =
 			then tl_oldest
 			else SOME (hd d)
 		 end
+fun get_day_in_month (xs : int list, m : int) =
+	if null xs 
+	then 0
+	else 
+		if m = 1
+		then hd xs
+		else get_day_in_month(tl xs, m-1)
+
+fun reasonable_date (d : int*int*int) =
+	if ((#1 d) mod 400 = 0 orelse ((#1 d) mod 4 = 0 andalso (#1 d) mod 100 <> 0)) andalso (#2 d) = 2 andalso (#3 d) = 29
+	then true
+	else 
+		if (#1 d) > 0 andalso (#2 d) <= 12 andalso (#2 d) >= 1 andalso ((#3 d) <= get_day_in_month (month_days, #2 d))
+		then true
+		else false
+		
