@@ -1,0 +1,11 @@
+
+
+fun sum_triple triple = 
+	case triple of
+		(x, y, z) => x + y + x
+
+fun full_name r =
+	case r of
+		{first=x, middle=y, last=z} => x ^ y ^ z
+
+
