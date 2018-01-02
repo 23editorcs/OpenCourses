@@ -1,0 +1,15 @@
+
+fun fact n =
+	if n=0
+	then 1
+	else n * fact (n-1)
+
+fun fact1 n =
+	let fun aux(n, acc) =
+	in
+		if n=0
+		then acc
+		else aux(n-1, acc*n)
+	end
+		aux(n,1)
+
