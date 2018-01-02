@@ -1,0 +1,9 @@
+
+fun sum xs = 
+	let fun aux(xs, acc) =
+			case xs of 
+				[] => acc
+			  | x::xs' => aux(xs', acc+x)
+	in
+		aux(xs,0)
+	end
