@@ -15,7 +15,7 @@ fun nth_tail_lame (n,xs) =
 	then xs
 	else tl (nth_tail_lame(n-1,xs))
 
-fun n_times(f,n,x) =
+fun n_times (f,n,x) =
 	if n=0
 	then x
 	else f (n_times(f, n-1, x))
@@ -30,3 +30,15 @@ val x3 = n_times(tl,2,[2,3,4,5])
 fun addition(n,x) = n_times(increment,n,x)
 fun double_n_times(n,x) = n_times(double,n,x)
 fun nth_tail(n,xs) = n_times(tl,n,xs)
+
+(* high-order function without polymorphic *)
+fun times_until_zero (f,x) =
+	if x=0 then 0 else 1 + times_until_zero (f, f x)
+(* (int -> int) * int -> int *)
+
+(* first-order function with polymorphic *)
+fun len xs = 
+	case xs of 
+		[] => 0
+	  | _::xs' => 1 + len xs'
+
