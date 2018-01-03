@@ -1,0 +1,8 @@
+
+fun map (f,xs) =
+	case xs of
+		[] => []
+	  | x::xs' => (f x) :: map(f,xs')
+
+val x1 = map((fn x => x+1),[4,3,5])
+val x2 = map(hd, [[1,2],[4,1]])
