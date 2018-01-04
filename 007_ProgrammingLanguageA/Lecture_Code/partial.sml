@@ -30,3 +30,19 @@ val hasZero = exists (fn x => x=0) (* int list -> bool *)
 
 val incrementalAll = List.map (fn x => x+1)
 val removeZeros = List.filter (fn x => x <> 0)
+
+
+(* curry with tupled *)
+fun range (i,j) = if i > j then [] else i::range(i+1, j)
+
+val countup = range 1 (* can't work with tupled function *)
+
+fun curry f x y = f (x,y)
+
+val countup1 = (curry range) 1 (* now it works *)
+
+(* uncurry *)
+fun uncurry f (x,y) = f x y
+
+(* other curry *)
+fun other_curry f x y = f y x
