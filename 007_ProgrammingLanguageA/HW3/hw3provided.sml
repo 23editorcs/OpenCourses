@@ -134,20 +134,34 @@ fun check_pat p =
 
 fun match (v,p) =
 (* valu*pattern -> (string*valu) list option *)	
-	let fun aux v p acc =
-			case p of 
-				Wildcard => SOME acc
-			  | Variable s => SOME ([(s,v)]@acc)
-			  | UnitP => if v = Unit then SOME acc else NONE
-			  | ConstP i => case v of
-								Const i => SOME acc 
-							  | _ => NONE
-			  | TupleP ps => case v of
-								 Tuple vs => all_answers match (ListPair.zip (ps,vs)) 
-							   | _ =>  NONE
-			  | ConstructorP (s1,p) => case v of
-										   Constructor(s2,v)=> if s1=s2 then match (v,p) else NONE
-										 | _ => NONE
-			  | _ => SOME acc
-	in aux v p []
-	end
+	case p of 
+		Wildcard => SOME []
+	  | Variable s => SOME [(s,v)]
+	  | UnitP => if v = Unit then SOME [] else NONE
+	  | ConstP i => let val x = v
+					in case x of
+						   Const j => SOME []
+						 | _ => NONE
+					end
+	  | TupleP ps => let val x = v
+					 in case x of 
+							Tuple vs => if (List.length ps = List.length vs)
+										then all_answers match (ListPair.zip (vs,ps))
+										else NONE
+						  | _ => NONE
+					 end
+	  | ConstructorP (s1,p) => let val x = v
+							   in case x of 
+									  Constructor (s2,v) => if s1=s2
+															then match (v,p)
+															else NONE
+							   end
+
+fun first_match v ps =
+(* valu * pattern list -> (string * valu) list option *)
+	SOME (first_answer (fn x => match (v,x)) ps)
+	handle NoAnswer => NONE
+
+
+
+
