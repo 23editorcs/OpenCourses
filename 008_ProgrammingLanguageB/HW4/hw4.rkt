@@ -63,19 +63,22 @@
   (letrec ([cached (make-vector n #f)]
            [y 0]
            [f (lambda (v)
-                (let ([ans (if (vector-ref cached (- n 1))
-                               (vector-assoc v cached)
-                               #f)])
+                (letrec ([h (lambda (x) (cond [(>= x n) #f]
+                                              [(equal? #f (vector-ref cached x)) #f]
+                                              [(equal? v (car (vector-ref cached x))) (vector-ref cached x)]
+                                              [else (h (+ x 1))]))]
+                         [ans (h 0)])
                   (if ans
-                      ans
+                      (begin (print "Using cached") ans)
                       (let ([new-ans (assoc v xs)])
                         (if new-ans
                             (begin (vector-set! cached y new-ans)
                                    (set! y (+ y 1))
+                                   (print "Not Using Cached")
+                                   (print cached)
                                    new-ans)
                             new-ans)))))])
     f))
                         
                                      
                         
-                    
